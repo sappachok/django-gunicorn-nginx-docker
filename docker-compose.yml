@@ -7,6 +7,8 @@ services:
     restart: always
     env_file:
       - django.env
+    volumes:
+      - /var/dockerdata/django/src:/src
     ports:
       - "8000:8000"
     command:
@@ -16,7 +18,7 @@ services:
     image: nginx:1.17
     container_name: ngx
     ports:
-      - "80:80"
+      - "9999:80"
     volumes:
       - ./nginx:/etc/nginx/conf.d
     depends_on:
